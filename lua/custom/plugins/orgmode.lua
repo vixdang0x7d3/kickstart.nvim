@@ -5,10 +5,17 @@ return {
     ft = { 'org' },
     config = function()
       -- Setup orgmode
-      require('orgmode').setup {
-        org_agenda_files = '~/org/**/*',
-        org_default_notes_file = '~/org/refile.org',
-      }
+      if vim.fn.has 'linux' then
+        require('orgmode').setup {
+          org_agenda_files = '~/org/**/*',
+          org_default_notes_file = '~/org/refile.org',
+        }
+      else
+        require('orgmode').setup {
+          org_agenda_files = [[D:/org/**/*]],
+          org_default_notes_file = [[D:/org/refile.org]],
+        }
+      end
     end,
   },
   {
