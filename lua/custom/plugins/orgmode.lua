@@ -11,6 +11,7 @@ return {
       }
     end,
   },
+
   {
     'nvim-orgmode/telescope-orgmode.nvim',
     event = 'VeryLazy',

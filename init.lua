@@ -94,8 +94,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- vim.opt.shellslash = true
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
+vim.opt.conceallevel = 1
 vim.opt.guicursor = ''
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
