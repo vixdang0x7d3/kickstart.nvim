@@ -642,7 +642,22 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
+
+        tailwindcss = {
+          capabilities = capabilities,
+          filetypes = { 'templ', 'astro', 'javascript', 'typescript', 'react' },
+          init_options = { userLanguage = { templ = 'html' } },
+        },
+
+        html = {
+          capabilities = capabilities,
+          filetypes = { 'templ', 'html' },
+        },
+
+        htmx = {
+          capabilities = capabilities,
+          filetypes = { 'templ', 'html' },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -724,6 +739,7 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
+        templ = { 'templ' },
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -805,7 +821,7 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm { select = true },
           --['<Tab>'] = cmp.mapping.select_next_item(),
           --['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
