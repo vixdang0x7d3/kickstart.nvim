@@ -96,6 +96,7 @@ vim.g.have_nerd_font = true
 -- vim.opt.shellslash = true
 vim.opt.conceallevel = 1
 vim.opt.guicursor = ''
+vim.opt.tabstop = 4
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -633,7 +634,21 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         gopls = {},
-        pyright = {},
+
+        ruff = {},
+        pyright = {
+          settings = {
+            pyright = {
+              disableOrganizeImports = true, -- Using Ruff
+            },
+            python = {
+              analysis = {
+                ignore = { '*' }, -- Using Ruff
+              },
+            },
+          },
+        },
+
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -741,9 +756,9 @@ require('lazy').setup({
       formatters_by_ft = {
         templ = { 'templ' },
         lua = { 'stylua' },
-        python = { 'ruff' },
+
         -- Conform can also run multiple formatters sequentially
-        --
+        -- python = { 'ruff' },
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
@@ -897,7 +912,7 @@ require('lazy').setup({
           return {
 
             -- nice autocomplete color
-
+            ['@variable.builtin'] = { italic = false },
             Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
             PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
