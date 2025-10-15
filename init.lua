@@ -96,7 +96,12 @@ vim.g.have_nerd_font = true
 -- vim.opt.shellslash = true
 vim.opt.conceallevel = 1
 vim.opt.guicursor = ''
+
+-- always use 4 spaces
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -692,15 +697,16 @@ require('lazy').setup({
         clangd = {},
         gopls = {},
 
-        pyright = {
-          settings = {
-            pyright = {
-              disableOrganizeImports = true,
-            },
-          },
-        },
+        -- pyright = {
+        --   settings = {
+        --     pyright = {
+        --       disableOrganizeImports = true,
+        --     },
+        --   },
+        -- },
 
         ruff = {},
+        ty = {},
 
         rust_analyzer = {},
         tailwindcss = {
@@ -709,7 +715,7 @@ require('lazy').setup({
           init_options = { userLanguage = { templ = 'html' } },
         },
 
-        html = {
+        superhtml = {
           capabilities = capabilities,
           filetypes = { 'templ', 'html' },
         },
@@ -1012,7 +1018,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'sql' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
