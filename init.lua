@@ -96,7 +96,11 @@ vim.g.have_nerd_font = true
 -- vim.opt.shellslash = true
 vim.opt.conceallevel = 1
 vim.opt.guicursor = ''
+
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -689,35 +693,22 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
-        gopls = {},
-
-        pyright = {
-          settings = {
-            pyright = {
-              disableOrganizeImports = true,
-            },
+        clangd = {
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--clang-tidy',
+            '--header-insertion=never',
+            '--completion-style=detailed',
+            '--function-arg-placeholders=0',
+            '--fallback-style=llvm',
           },
         },
 
         ruff = {},
+        ty = {},
 
         rust_analyzer = {},
-        tailwindcss = {
-          capabilities = capabilities,
-          filetypes = { 'templ', 'astro', 'javascript', 'typescript', 'react' },
-          init_options = { userLanguage = { templ = 'html' } },
-        },
-
-        html = {
-          capabilities = capabilities,
-          filetypes = { 'templ', 'html' },
-        },
-
-        htmx = {
-          capabilities = capabilities,
-          filetypes = { 'templ', 'html' },
-        },
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

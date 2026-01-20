@@ -19,7 +19,7 @@ return {
     workspaces = {
       {
         name = 'looks_to_the_moon',
-        path = '~/looks_to_the_moon',
+        path = '/media/v/shared_stuffs/looks_to_the_moon',
       },
     },
 
